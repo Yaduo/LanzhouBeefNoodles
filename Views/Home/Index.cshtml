@@ -1,0 +1,44 @@
+﻿@*@model IEnumerable<LanzhouBeefNoodles.Models.Noodle>*@
+
+@model LanzhouBeefNoodles.ViewModels.HomeViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>产品列表</h2>
+
+@foreach (var noodle in Model.Noodles)
+{
+    <div class="col-sm-4 col-lg-4 col-md-4">
+        <div class="thumbnail">
+            <img src="@noodle.ImageUrl" alt="">
+            <div class="caption">
+                <h3 class="pull-right">￥@noodle.Price</h3>
+                <h3>
+                    <a 
+                       asp-controller="Home" 
+                       asp-action="Detail" 
+                       asp-route-id="@noodle.Id"
+                    >@noodle.Name</a>
+                </h3>
+                <p>@noodle.ShortDescription</p>
+            </div>
+        </div>
+    </div>
+}
+
+<h2>评论</h2>
+
+<div class="list-group">
+    @foreach (var feedback in Model.Feedbacks)
+    {
+        <a class="list-group-item">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="list-group-item-heading">@feedback.Name</h5>
+                <small class="pull-right">@feedback.CreateDateUTC</small>
+            </div>
+            <p class="list-group-item-text">@feedback.Message</p>
+        </a>
+    }
+</div>

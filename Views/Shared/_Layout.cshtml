@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>使用模板 @ViewBag.Title</title>
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/content/site.css" />
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-controller="Home" asp-action="Index" class="navbar-brand">正宗兰州拉面</a></li>
+                    <li><a asp-controller="Feedback" asp-action="Index">意见反馈</a></li>
+                    <partial name="_loginPartial">                
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        <div class="row">
+            @RenderBody()
+        </div>
+    </div>
+
+    @RenderSection("Scripts", required:false);
+</body>
+</html>
